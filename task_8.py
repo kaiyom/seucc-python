@@ -1,7 +1,7 @@
 FILE = "mysquad.txt"
 team_name = "plus"
 team = ["Lionel Messi", "Cristiano Ronaldo", "Neymar", 
-        "Zlatan Ibrahimović", "Ronaldinho", "Robert Lewandowski"]
+        "Zlatan Ibrahimovic", "Ronaldinho", "Robert Lewandowski"]
 msg = f"My favorite Football team is: {team_name}\n"
 counter = 1
 increment = 2
