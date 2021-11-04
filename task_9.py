@@ -5,6 +5,7 @@ userTransection = []
 compTransection = []
 notInBtween = True
 
+# menu
 def gameScreen():
     print(" "*10, "-"*15)
     print(" "*10, "|Guessing Game|")
@@ -13,11 +14,13 @@ def gameScreen():
     print(" "*10, "2.  Results")
     print(" "*10, "3.  Exit")
 
+# game logic
 def guess():
     user = int(input("Your guess: "))
     comp = rm.randint(1, 12)
     return user == comp
 
+# prints the winner based on match score
 def printWinner(userWins):
     print(" "*10, "-"*15)
     if userWins:
@@ -26,10 +29,24 @@ def printWinner(userWins):
         print( " "*11, "Computer Wins")
     print(" "*10, "-"*15, "\n")
 
+# storing score in a file
+def storeScore():
+    global userTransection
+    global compTransection
+    with open(FILE, "w") as fileWritter:
+        fileWritter.write("User Transections: \n")
+        fileWritter.write(f"{str(userTransection)}\n")
+
+        fileWritter.write("\nComputer Transections: \n")
+        fileWritter.write(f"{str(compTransection)}\n")
+    userTransection = []    # resetting for next match
+    compTransection = []    # resetting for next match
+
+# game score logic
 def gamePlay():
     userScore = 0
     compScore = 0
-    for ignore in range(0, 10): # repeat ten times
+    for ignore in range(0, 10): # just repeat ten times
         if guess():
             userScore += 100
             print("Well done!")
@@ -41,18 +58,15 @@ def gamePlay():
         userTransection.append(f"{userScore} BDT");
         compTransection.append(f"{compScore} BDT");
     
+    storeScore()
     printWinner(userScore > compScore)
 
+# reading score file
 def printScore():
-    with open(FILE, "w") as fileWritter:
-        fileWritter.write("Your Transections: \n")
-        for eachTr in userTransection:
-            fileWritter.write(f"{eachTr}\n")
+    with open(FILE, "r") as fileReader:
+        print(fileReader.read())
 
-        fileWritter.write("\nComputer Transections: \n")
-        for eachTr in compTransection:
-            fileWritter.write(f"{eachTr}\n")
-
+# game loop
 while True:
     if notInBtween:
         gameScreen()
@@ -72,3 +86,4 @@ while True:
             gamePlay()
         else:
             notInBtween = True
+    
