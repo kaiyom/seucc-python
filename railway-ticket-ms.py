@@ -1,6 +1,6 @@
 class Color:
     red     = '\033[01;31m'
-    green   = '\033[01;32m'
+    green   = '\033[01;36m'
     blue    = '\033[01;34m'
     select  = '\033[01;40m'
     invert  = '\033[01;7m'
@@ -80,7 +80,7 @@ def reserveTicket():
 
     yn = input("\nConfirm Ticket (y/n):> ")
     if yn.lower() == 'y':
-        print(_c.red+"**Reservation Done**"+_c.nc)
+        print(_c.green+"**Reservation Done**"+_c.nc)
     else:
         print(_c.red+"**Reservation Canceled**"+_c.nc)
 
