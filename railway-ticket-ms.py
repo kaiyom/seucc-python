@@ -90,8 +90,8 @@ if __name__ == "__main__":
         mainMenu()
         select = int(input("Select: "))
         
-        if select > 5 or select < 1:
-            print("** Wrong option selected **")
+        if select > 3 or select < 1:
+            print(_c.red+"** Wrong option selected **"+_c.nc)
             continue
         if select == 1: 
             reserveTicket()
